@@ -25,19 +25,20 @@ namespace AlbumYearFinderThing
 
 		private void btn_Peruse_Click(object sender, EventArgs e)
 		{
-			string[] @bandDirectories = Directory.GetDirectories(txt_MusicPath.Text);
+			listBox_Albums.Items.Clear();
+			string[] bandDirectories = Directory.GetDirectories(txt_MusicPath.Text);
 			List<string> albums = new List<string>() { };
 
-			foreach (string @bandFolder in @bandDirectories)
+			foreach (string bandFolder in bandDirectories)
 			{
-				string[] @albumFolders = Directory.GetDirectories(@bandFolder);
-				foreach (string @albumFolder in @albumFolders)
+				string[] albumFolders = Directory.GetDirectories(bandFolder);
+				foreach (string albumFolder in albumFolders)
 				{
-					string[] @songs = Directory.GetFiles(@albumFolder, "*.mp3");
-					foreach (string @song in @songs)
+					string[] songs = Directory.GetFiles(albumFolder, "*.mp3");
+					foreach (string song in songs)
 					{
 						string songInfo = "";
-						TagLib.File songFile = TagLib.File.Create(@song);
+						TagLib.File songFile = TagLib.File.Create(song);
 						if (songFile.Tag.FirstPerformer != null)
 						{
 							songInfo += songFile.Tag.FirstPerformer.ToString();
