@@ -36,6 +36,8 @@
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
 			this.btn_Peruse = new System.Windows.Forms.Button();
 			this.listBox_Albums = new System.Windows.Forms.ListBox();
+			this.loadingBox = new System.Windows.Forms.PictureBox();
+			((System.ComponentModel.ISupportInitialize)(this.loadingBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// btn_Set_Music_Path
@@ -106,11 +108,20 @@
 			this.listBox_Albums.TabIndex = 6;
 			this.listBox_Albums.SelectedIndexChanged += new System.EventHandler(this.listBox_Albums_SelectedIndexChanged);
 			// 
+			// loadingBox
+			// 
+			this.loadingBox.Location = new System.Drawing.Point(351, 170);
+			this.loadingBox.Name = "loadingBox";
+			this.loadingBox.Size = new System.Drawing.Size(200, 200);
+			this.loadingBox.TabIndex = 7;
+			this.loadingBox.TabStop = false;
+			// 
 			// AlbumYearFinderThing
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(916, 567);
+			this.Controls.Add(this.loadingBox);
 			this.Controls.Add(this.listBox_Albums);
 			this.Controls.Add(this.btn_Peruse);
 			this.Controls.Add(this.txt_Album_Year);
@@ -120,6 +131,7 @@
 			this.Controls.Add(this.btn_Set_Music_Path);
 			this.Name = "AlbumYearFinderThing";
 			this.Text = "Album Year Finder Thing";
+			((System.ComponentModel.ISupportInitialize)(this.loadingBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -135,6 +147,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
 		private System.Windows.Forms.Button btn_Peruse;
 		private System.Windows.Forms.ListBox listBox_Albums;
+		private System.Windows.Forms.PictureBox loadingBox;
     }
 }
 
