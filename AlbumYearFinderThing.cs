@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace AlbumYearFinderThing
 {
@@ -17,6 +18,8 @@ namespace AlbumYearFinderThing
 			InitializeComponent();
 			loadingBox.Enabled = false;
 			loadingBox.Visible = false;
+			txt_MusicPath.Text = @"H:\Music";
+			txt_Album_Year.Text = DateTime.Today.Year.ToString();
 		}
 
 		private void btn_Set_Music_Path_Click(object sender, EventArgs e)
@@ -31,7 +34,9 @@ namespace AlbumYearFinderThing
 		private void btn_Peruse_Click(object sender, EventArgs e)
 		{
 			listBox_Albums.Items.Clear();
-			albums = new List<string>() { };
+			txt_Album_Year.Text = txt_Album_Year.Text.Trim();
+			albums = new List<string>();
+			albums.Add(txt_Album_Year.Text);
 
 			foreach (Control ctrl in this.Controls)
 			{
@@ -63,33 +68,39 @@ namespace AlbumYearFinderThing
 		private void queryWorker_DoWork(object sender, DoWorkEventArgs e)
 		{
 			string[] songs = Directory.GetFiles(txt_MusicPath.Text, "*.mp3", SearchOption.AllDirectories);
+			List<string> skipDirs = new List<string>();
 
 			foreach (string song in songs)
 			{
-				string songInfo = "";
-				TagLib.File songFile = TagLib.File.Create(song);
-				if (songFile.Tag.FirstPerformer != null)
-				{
-					songInfo += songFile.Tag.FirstPerformer.ToString();
-					songInfo += " - ";
-				}
-				if (songFile.Tag.Album != null)
-				{
-					songInfo += songFile.Tag.Album.ToString();
-					songInfo += " - ";
-				}
-				if (songFile.Tag.Year != null)
-				{
-					songInfo += songFile.Tag.Year.ToString();
-				}
-				albums.Sort();
+				if (skipDirs.Contains(Path.GetDirectoryName(song)))
+				{ continue; }
 
-				if (songFile.Tag.Year.ToString() == txt_Album_Year.Text && albums.Contains(songInfo) == false)
+				StringBuilder songInfo = new StringBuilder();
+				TagLib.File songFile = TagLib.File.Create(song);
+
+				if (!songFile.Tag.Year.ToString().Equals(txt_Album_Year.Text))
 				{
-					albums.Add(songInfo);
-					songInfo = "";
+					skipDirs.Add(Path.GetDirectoryName(song));
+					continue;
+				}
+
+				if (!string.IsNullOrEmpty(songFile.Tag.FirstPerformer))
+				{
+					songInfo.Append($"{songFile.Tag.FirstPerformer} - ");
+				}
+				if (!string.IsNullOrEmpty(songFile.Tag.Album))
+				{
+					songInfo.Append(songFile.Tag.Album);
+				}
+
+				string album = songInfo.ToString();
+				if (!albums.Contains(album))
+				{
+					albums.Add(album);
 				}
 			}
+
+			albums.Sort();
 		}
 
 		private void listBox_Albums_SelectedIndexChanged(object sender, EventArgs e)
