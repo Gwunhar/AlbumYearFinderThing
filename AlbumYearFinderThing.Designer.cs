@@ -46,7 +46,7 @@
 			this.btn_Set_Music_Path.Location = new System.Drawing.Point(840, 31);
 			this.btn_Set_Music_Path.Name = "btn_Set_Music_Path";
 			this.btn_Set_Music_Path.Size = new System.Drawing.Size(37, 23);
-			this.btn_Set_Music_Path.TabIndex = 0;
+			this.btn_Set_Music_Path.TabIndex = 2;
 			this.btn_Set_Music_Path.Text = "...";
 			this.btn_Set_Music_Path.UseVisualStyleBackColor = true;
 			this.btn_Set_Music_Path.Click += new System.EventHandler(this.btn_Set_Music_Path_Click);
@@ -57,7 +57,7 @@
 			this.lbl_Music_Path.Location = new System.Drawing.Point(32, 35);
 			this.lbl_Music_Path.Name = "lbl_Music_Path";
 			this.lbl_Music_Path.Size = new System.Drawing.Size(60, 13);
-			this.lbl_Music_Path.TabIndex = 1;
+			this.lbl_Music_Path.TabIndex = 98;
 			this.lbl_Music_Path.Text = "Music Path";
 			// 
 			// txt_MusicPath
@@ -65,14 +65,14 @@
 			this.txt_MusicPath.Location = new System.Drawing.Point(98, 34);
 			this.txt_MusicPath.Name = "txt_MusicPath";
 			this.txt_MusicPath.Size = new System.Drawing.Size(736, 20);
-			this.txt_MusicPath.TabIndex = 2;
+			this.txt_MusicPath.TabIndex = 3;
 			// 
 			// txt_Album_Year
 			// 
 			this.txt_Album_Year.Location = new System.Drawing.Point(98, 75);
 			this.txt_Album_Year.Name = "txt_Album_Year";
 			this.txt_Album_Year.Size = new System.Drawing.Size(84, 20);
-			this.txt_Album_Year.TabIndex = 4;
+			this.txt_Album_Year.TabIndex = 1;
 			// 
 			// lbl_Album_Year
 			// 
@@ -80,7 +80,7 @@
 			this.lbl_Album_Year.Location = new System.Drawing.Point(32, 76);
 			this.lbl_Album_Year.Name = "lbl_Album_Year";
 			this.lbl_Album_Year.Size = new System.Drawing.Size(61, 13);
-			this.lbl_Album_Year.TabIndex = 3;
+			this.lbl_Album_Year.TabIndex = 99;
 			this.lbl_Album_Year.Text = "Album Year";
 			// 
 			// folderBrowserDialog
@@ -92,7 +92,7 @@
 			this.btn_Peruse.Location = new System.Drawing.Point(774, 66);
 			this.btn_Peruse.Name = "btn_Peruse";
 			this.btn_Peruse.Size = new System.Drawing.Size(103, 23);
-			this.btn_Peruse.TabIndex = 5;
+			this.btn_Peruse.TabIndex = 0;
 			this.btn_Peruse.Text = "Peruse Musics";
 			this.btn_Peruse.UseVisualStyleBackColor = true;
 			this.btn_Peruse.Click += new System.EventHandler(this.btn_Peruse_Click);
@@ -105,7 +105,7 @@
 			this.listBox_Albums.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
 			this.listBox_Albums.Size = new System.Drawing.Size(842, 446);
 			this.listBox_Albums.Sorted = true;
-			this.listBox_Albums.TabIndex = 6;
+			this.listBox_Albums.TabIndex = 4;
 			this.listBox_Albums.SelectedIndexChanged += new System.EventHandler(this.listBox_Albums_SelectedIndexChanged);
 			// 
 			// loadingBox
